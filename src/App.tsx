@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import {
   USER_ID,
   createTodo,
   deleteTodo,
   getTodos,
   updateTodo,
-} from './api/todos';
-import { ErrorNotification } from './components/ErrorNotification';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { TodoList } from './components/TodoList';
-import { Todo } from './types/Todo';
-import { UserWarning } from './UserWarning';
+} from './api/todos'
+import { ErrorNotification } from './components/ErrorNotification'
+import { Footer } from './components/Footer'
+import { Header } from './components/Header'
+import { TodoList } from './components/TodoList'
+import { Todo } from './types/Todo'
+import { UserWarning } from './UserWarning'
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -42,7 +42,7 @@ export const App: React.FC = () => {
     }
 
     const tempTodoItem: Todo = {
-      id: Date.now(),
+      id:-Date.now(),
       userId: USER_ID,
       title: newTodo.trim(),
       completed: false,
@@ -56,12 +56,12 @@ export const App: React.FC = () => {
     try {
       const newTodoItem = await createTodo(newTodo.trim());
 
-      setTodos(prevTodos =>
-        prevTodos.map(todo =>
-          todo.id === tempTodoItem.id ? newTodoItem : todo,
-        ),
-      );
-      setNewTodo('');
+  setTodos(prevTodos =>
+    prevTodos.map(todo =>
+      todo.id === tempTodoItem.id ? { ...newTodoItem, id: newTodoItem.id } : todo
+    ),
+  );
+  setNewTodo('');
     } catch {
       setError('Unable to add a todo');
       setTodos(prevTodos =>
