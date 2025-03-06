@@ -95,15 +95,15 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         </>
       )}
 
-{(isLoading || isTemporary) && (
-  <div
-    data-cy="TodoLoader"
-    className={`modal overlay ${isLoading || isTemporary ? 'is-active' : ''}`}
-  >
-    <div className="modal-background has-background-white-ter"></div>
-    <div className="loader"></div>
-  </div>
-)}
+<div
+  data-cy="TodoLoader"
+  className={`modal overlay ${isLoading || isTemporary ? 'is-active' : ''}`}
+  style={{ display: isLoading || isTemporary ? 'block' : 'none' }}
+>
+  <div className="modal-background has-background-white-ter"></div>
+  <div className="loader"></div>
+</div>
+
     </div>
   );
 };
