@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Todo } from '../types/Todo';
+import React, { useEffect, useRef } from 'react'
+import { Todo } from '../types/Todo'
 
 interface TodoItemProps {
   todo: Todo;
@@ -95,12 +95,15 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         </>
       )}
 
-      {(isLoading || isTemporary) && (
-        <div data-cy="TodoLoader" className="modal overlay is-active">
-          <div className="modal-background has-background-white-ter"></div>
-          <div className="loader"></div>
-        </div>
-      )}
+{(isLoading || isTemporary) && (
+  <div
+    data-cy="TodoLoader"
+    className={`modal overlay ${isLoading || isTemporary ? 'is-active' : ''}`}
+  >
+    <div className="modal-background has-background-white-ter"></div>
+    <div className="loader"></div>
+  </div>
+)}
     </div>
   );
 };
